@@ -8,8 +8,10 @@ Created on Sun Feb 18 20:04:03 2018
 import pandas as pd
 import glob
 
-path =r'C:\\Users\\Stephen\\Desktop\\College Stuff\\Semester8\\FYP\\Datasets\\UnmarkedData\\TestData'
+path =r'SetUpThePathHere'
 filenames = glob.glob(path + "/*.txt")
+
+#iterating through all files in a repository, analysing all files that end in .txt.
 
 list_ = []
 for file_ in filenames:
@@ -21,4 +23,9 @@ for file_ in filenames:
     list_.append(df)
 frame = pd.concat(list_)
 
-frame.to_csv("C:\\Users\\Stephen\\Desktop\\College Stuff\\Semester8\\FYP\\0000Dataset.csv", index=False, header=True)
+#Creating a pandas df that will be the required data. You select the features/ columns by the usecols function. 
+#Creating a file out of all the files being analyised. 
+
+frame.to_csv("SetUpThePathHereForTheEndFile", index=False, header=True)
+
+#End result for me was a csv file with over 1.5 million rows. 

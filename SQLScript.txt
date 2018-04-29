@@ -1,0 +1,41 @@
+#explain SELECT count(siteId) FROM fyp_data.yoydataset;
+
+#select * from fyp_data.yoydatasetW0;
+
+use fyp_data;
+
+
+/*DROP TABLE IF EXISTS `yoydatasetW0`;
+
+CREATE TABLE yoydatasetW0 (
+	recordId int(20) NOT NULL AUTO_INCREMENT primary key,
+    date_Time datetime,
+    siteId int,
+    count int,
+    direction int,
+    vehicleClass int,
+    speed int,
+    length int,
+    classScheme int
+);
+*/
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 5.7/Uploads/FinalisedData.csv' INTO TABLE yoydataset 
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+/*create INDEX idx_Siteid
+on yoydataset (siteId);
+
+
+explain select count(*) from  fyp_data.yoydataset;
+*/
+
+truncate yoydataset;
+
+/*LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 5.7/Uploads/YoYDatasetBigW0.csv' INTO TABLE yoydataset
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;*/

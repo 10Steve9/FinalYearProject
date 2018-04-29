@@ -15,11 +15,11 @@ mydb = MySQLdb.connect(host='127.0.0.1:3306',
     db='fyp_data')
 cursor = mydb.cursor()
 
-path =r'PutYourPathHere'
+path =r'C:\\Users\\Stephen\\Desktop\\College Stuff\\Semester8\\FYP\\'
 filenames = glob.glob(path + "/*.csv")
 
 for file_ in filenames:
-    csv_data = pd.read_csv(file_,'PutYourPathHere')
+    csv_data = pd.read_csv(file_,'C:\\Users\\Stephen\\Desktop\\College Stuff\\Semester8\\FYP\\0000Dataset.csv')
 for row in csv_data:
     cursor.execute('INSERT INTO testcsv(siteId,Date,Time,Count,Direction,vehicleClass,Speed,Length,classScheme)' \
           'VALUES("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")', 
@@ -28,5 +28,3 @@ for row in csv_data:
 mydb.commit()
 cursor.close()
 print("Done")
-
-#Python3 doesn't support this anymore. Have to look into other means. 

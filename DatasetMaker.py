@@ -6,13 +6,15 @@ Created on Sun Feb 18 20:04:03 2018
 """
 
 import pandas as pd
+import numpy
 import glob
+from time import time
 
-path =r'SetUpThePathHere'
+start = time()
+path =r'C:\\Users\\Stephen\\Desktop\\College Stuff\\Semester8\\FYP\\Datasets\\UnmarkedData\\Data4.3'
+
 filenames = glob.glob(path + "/*.txt")
-
-#iterating through all files in a repository, analysing all files that end in .txt.
-
+#filenames = os.listdir(path)
 list_ = []
 for file_ in filenames:
     df = pd.read_csv(file_,
@@ -22,10 +24,17 @@ for file_ in filenames:
                  parse_dates=[['Date', 'Time']])
     list_.append(df)
 frame = pd.concat(list_)
+#print(frame.shape)
+#print(frame.describe())
 
-#Creating a pandas df that will be the required data. You select the features/ columns by the usecols function. 
-#Creating a file out of all the files being analyised. 
 
-frame.to_csv("SetUpThePathHereForTheEndFile", index=False, header=True)
-
-#End result for me was a csv file with over 1.5 million rows. 
+#print(frame.describe())
+#print((frame == 0).sum())
+frame = frame.replace(0, numpy.NaN)
+frame.dropna(inplace=True)
+# summarize the number of rows and columns in the dataset
+#print(frame.shape)
+#print(frame.describe())
+frame.to_csv("C:\\Users\\Stephen\\Desktop\\College Stuff\\Semester8\\FYP\\FinalData43.csv", index=False, header=True)
+end = time()
+print('Elapsed time: {}'.format(end-start))
